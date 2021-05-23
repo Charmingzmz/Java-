@@ -1,0 +1,206 @@
+#正则表达式
+###01正则表达式的概念和作用
+	* A: 正则表达式的概念和作用
+		* a: 正则表达式的概述
+			* 正则表达式也是一个字符串，用来定义匹配规则，在Pattern类中有简单的规则定义。
+			  可以结合字符串类的方法使用。
+			* 简单记：正则表达式是具有特殊含义的字符串。
+		* b: 正则表达式的作用
+			* 比如注册邮箱,邮箱有用户名和密码,一般会对其限制长度,这个限制长度的事情就是正则表达式做的
+
+###02、正则表达式语法规则
+	* A: 正则表达式语法规则
+		* a: 字符
+			* x  代表的是字符x
+			* \\ 代表的是反斜线字符'\'
+			* \t 代表的是制表符
+			* \n 代表的是换行符
+			* \r 代表的是回车符
+		* b: 字符类
+			* [abc]    a、b 或 c（简单类）
+			* [^abc]   任何字符，除了 a、b 或 c（否定）
+			* [a-zA-Z] a到 z 或 A到 Z，两头的字母包括在内（范围） 
+			* [0-9]    0到9的字符都包括
+			* [a-zA-Z_0-9] 代表的字母或者数字或者下划线(即单词字符)
+		* c: 预定义字符类
+			* . 任何字符（与行结束符可能匹配也可能不匹配） 
+			* \d 数字：[0-9] 
+			* \D 非数字： [^0-9] 
+			* \s 空白字符：[ \t\n\x0B\f\r] 
+			* \S 非空白字符：[^\s] 
+			* \w 单词字符：[a-zA-Z_0-9] 
+			* \W 非单词字符：[^\w] 
+		* d: 数量词
+			* X?     X，一次或一次也没有
+			* X*     X，零次或多次
+			* X+     X，一次或多次
+			* X{n}   X，恰好 n 次 
+			* X{n,}  X，至少 n 次 
+			* X{n,m} X，至少 n 次，但是不超过 m 次
+
+###03、正则表达式练习校验qq号是否合法
+
+	需求：
+		要求必须是5-15位
+ 		0不能开头
+ 		必须都是数字
+
+	
+###04、正则表达式练习判断字符串中间的字符是否是元音
+	
+		需求:
+			判断字符串”qaq”中间的字符是否是元音 
+			
+
+###05、正则表达式切割练习
+
+	需求：
+	 切割字符串"aa,bb,cc";
+	 切割字符串"-1 99 4 23";
+	 切割字符串"-1   99 4     23";
+	 String[] split(String regex) 根据给定正则表达式的匹配拆分此字符串。 
+
+###06、正则表达式替换联系
+
+	匹配正确的数字:
+		匹配规则：
+			* 匹配正整数：”\\d+”
+			* 匹配正小数：”\\d+\\.\\d+”  
+			* 匹配负整数：”-\\d+”
+			* 匹配负小数：”-\\d+\\.\\d+”
+			* 匹配保留两位小数的正数：”\\d+\\.\\d{2}”
+			* 匹配保留1-3位小数的正数：”\\d+\\.\\d{1,3}”
+
+
+
+
+
+ 	校验qq号码
+* 		要求必须是5-15位
+* 		0不能开头
+* 		必须都是数字
+	
+	正则表达式：就是一套规则，可以用于匹配字符串
+	
+	boolean matches(String regex) ：判断当前字符串是否匹配指定的正则表达式，如果匹配则返回true，否则返回false
+* 
+*  
+ */
+public class RegexDemo {
+	public static void main(String[] args) {
+		String qq = "12a345";
+		/*boolean flag = checkQQ(qq);
+		System.out.println(flag);*/
+		
+		
+		boolean flag = qq.matches("[1-9][0-9]{4,14}");
+		System.out.println(flag);
+	}
+	
+	public static boolean checkQQ(String qq) {
+		int length = qq.length();
+		//要求必须是5-15位
+		if(length < 5 || length > 15) {
+			return false;
+		}
+		
+		//0不能开头
+		if(qq.startsWith("0")) {
+			return false;
+		}
+		
+		//必须都是数字
+		for (int i = 0; i < length; i++) {
+			//得到参数的每一个字符
+			char c = qq.charAt(i);
+			if(c < '0' || c > '9') {
+				return false;
+			}
+		}
+ 	1   ----------校验qq号码
+* 		要求必须是5-15位
+* 		0不能开头
+* 		必须都是数字
+	
+	正则表达式：就是一套规则，可以用于匹配字符串
+	
+	boolean matches(String regex) ：判断当前字符串是否匹配指定的正则表达式，如果匹配则返回true，否则返回false
+* 
+*  
+ */
+public class RegexDemo {
+	public static void main(String[] args) {
+		String qq = "12a345";
+		/*boolean flag = checkQQ(qq);
+		System.out.println(flag);*/
+		
+		
+		boolean flag = qq.matches("[1-9][0-9]{4,14}");
+		System.out.println(flag);
+	}
+	
+	public static boolean checkQQ(String qq) {
+		int length = qq.length();
+		//要求必须是5-15位
+		if(length < 5 || length > 15) {
+			return false;
+		}
+		
+		//0不能开头
+		if(qq.startsWith("0")) {
+			return false;
+		}
+		
+		//必须都是数字
+		for (int i = 0; i < length; i++) {
+			//得到参数的每一个字符
+			char c = qq.charAt(i);
+			if(c < '0' || c > '9') {
+				return false;
+			}
+		}
+		return true;//符合要求
+	}
+}
+
+
+   2----------------
+
+ *  判断字符串”qaq”中间的字符是否是元音 
+ *  
+ *  aeiou
+ *  AEIOU
+ *  
+ */
+public class RegexDemo2 {
+	public static void main(String[] args) {
+		boolean flag = check2("qbq");
+		System.out.println(flag);
+	}
+	
+	
+	public static boolean check(String s) {
+		s = s.toLowerCase();
+		
+		char ch = s.charAt(1);
+		/*if(ch == 'a' || ch == 'e' || ch == 'i' || ch == 'o' || ch == 'u') {
+			return true;
+		}
+		
+		return false;*/
+		
+		String str = "aeiou";
+		
+		return str.contains(ch + "");
+	}
+	
+	
+	public static boolean check2(String s) {
+		
+		return s.matches("\\w[aeiouAEIOU]\\w");
+	}
+
+}
+
+
+	  
