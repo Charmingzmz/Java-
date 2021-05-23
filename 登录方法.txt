@@ -1,0 +1,20 @@
+                    String name="zmz";
+	    String psw="123";
+	    for(int i=0;i<3;i++){
+	    Scanner src=new Scanner(System.in);
+	    System.out.println("请输入用户名：");
+	    String Name= src.nextLine();
+	    System.out.println("请输入密码：");
+	    String Psw= src.nextLine();
+	    if(Name.equals(name)&&Psw.equals(psw)) {
+	    	System.out.println("登录成功！");
+	    	break;
+	    }else {
+	    	if(i==2) {
+	    		System.out.println("输入三次都不正确！用户已被锁定，请联系管理员！");
+	    	}else {
+	    	System.out.println("登录失败！请重新输入！");
+	    	}
+	    }
+	    
+	        }
