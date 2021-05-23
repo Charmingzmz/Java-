@@ -1,0 +1,13 @@
+(单一继承，多重继承)一个类继承一个类可以直接继承他的所有共有成员和方法 不能继承他的私有成员 也可以重写他的方法 ，
+如果重写了他的方法后可以通过super关键字来调用父类的成员，或者用this关键字来调用自己的成员变量。
+格式：
+				class 子类 extends 父类{}
+
+抽象类：当一个类继承了一个抽象类就必须重写他的所有的抽象方法，除非把自己定义成一个抽象类，抽象类不能实例化。
+格式:public abstract class 类名{}
+
+接口（可以实现多个接口，如干爹）public class ClassesDaoImpl implements IClassesDao，ICourseDao{}：是比抽象类更抽象的类，接口也不能实例化，
+里面的方法全是抽象方法并且只能是public，abstract修饰,默认是public：
+如public Classes findClassesById(String id); public abstract findClassesById(String id）；
+当一个类实现了一个接口就得实现他的所有接口方法，而且接口里面值只能是常量 如：public final int num=0,
+接口与接口之间是继承关系。
